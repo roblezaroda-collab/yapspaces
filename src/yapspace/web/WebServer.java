@@ -31,7 +31,7 @@ public class WebServer {
         router.get("/favicon.ico", req -> WebResponse.plain(204, ""));
 
         // "localhost" only: the site can be opened from this computer, not from the network.
-        server = HttpServer.create(new InetSocketAddress("127.0.0.1", port), 0);
+        server = HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
         server.createContext("/", router);
         server.setExecutor(executor);
     }
