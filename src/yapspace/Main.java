@@ -18,7 +18,11 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) {
-        int port = 8080;
+                int port = 8080;
+        String renderPort = System.getenv("PORT");
+        if (renderPort != null && !renderPort.isBlank()) {
+            port = Integer.parseInt(renderPort);
+        }
         Path dataDir = Paths.get("data");
         for (String arg : args) {
             if (arg.startsWith("--port=")) {
